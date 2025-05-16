@@ -16,12 +16,40 @@ namespace MainForm
     public partial class AddTransactionForm : Form
     {
         private readonly BudgetService _budgetService;
+        private readonly Transaction _editingTransaction;
+        private readonly bool _isEditMode;
         public AddTransactionForm(BudgetService budgetService)
         {
             InitializeComponent();
             _budgetService = budgetService;
-            comboBoxTransictionType.SelectedIndex = 0;
-            comboBoxTransactionCategory.SelectedIndex = 0;
+            comboBoxTransictionType.SelectedIndexChanged += comboBoxTransictionType_SelectedIndexChanged_1;
+            comboBoxTransactionCategory.SelectedIndexChanged += comboBoxTransactionCategory_SelectedIndexChanged;
+        }
+        public AddTransactionForm(BudgetService budgetService, Transaction transactionToEdit)
+    : this(budgetService)
+        {
+            _editingTransaction = transactionToEdit;
+            _isEditMode = true;
+            this.Text = "Редагувати транзакцію";
+
+            comboBoxTransictionType.SelectedItem = transactionToEdit.Type;
+            comboBoxTransictionType.Enabled = false;
+
+            comboBoxTransictionType_SelectedIndexChanged_1(null, null);
+
+            int catIndex = comboBoxTransactionCategory.Items.IndexOf(transactionToEdit.Category);
+            if (catIndex >= 0)
+                comboBoxTransactionCategory.SelectedIndex = catIndex;
+
+            comboBoxTransactionCategory_SelectedIndexChanged(null, null);
+
+            int subIndex = comboBoxSubCategory.Items.IndexOf(transactionToEdit.Subcategory);
+            if (subIndex >= 0)
+                comboBoxSubCategory.SelectedIndex = subIndex;
+
+            textBoxSum.Text = transactionToEdit.Amount.ToString();
+            textBoxTransactionDescription.Text = transactionToEdit.Description;
+            dateTimePickerTransaction.Value = transactionToEdit.Date;
         }
 
         private void buttonTransactionSave_Click(object sender, EventArgs e)

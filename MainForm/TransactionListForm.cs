@@ -1,4 +1,6 @@
-﻿using MainForm.Services;
+﻿using MainForm.Data;
+using MainForm.Models;
+using MainForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MainForm.Data;
 
 namespace MainForm
 {
@@ -141,6 +142,44 @@ namespace MainForm
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonEditeSelectedTransaction_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTransactions.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Оберіть транзакцію для редагування", "Увага", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var row = dataGridViewTransactions.SelectedRows[0];
+
+            var date = DateTime.Parse(row.Cells[0].Value.ToString());
+            var type = row.Cells[1].Value.ToString();
+            var category = row.Cells[2].Value.ToString();
+            var subcategory = row.Cells[3].Value.ToString();
+            var amount = decimal.Parse(row.Cells[4].Value.ToString().Replace(" грн", ""));
+            var description = row.Cells[5].Value.ToString();
+
+            var original = _budgetService.Transactions.FirstOrDefault(t =>
+                t.Date.Date == date.Date &&
+                t.Type == type &&
+                t.Category == category &&
+                t.Subcategory == subcategory &&
+                t.Amount == amount &&
+                t.Description == description);
+
+            if (original == null)
+            {
+                MessageBox.Show("Не вдалося знайти транзакцію", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var editForm = new AddTransactionForm(_budgetService, original);
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                LoadTransactions();
+            }
         }
     }
 }

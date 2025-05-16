@@ -31,8 +31,8 @@ namespace MainForm
             labelTotalIncome.Text = $"{income} грн";
             labeltotalExpenses.Text = $"{expenses} грн";
             labelNetBalance.Text = $"{balance} грн";
-        }
 
+        }
 
         private void buttonSaveReportToFile_Click_1(object sender, EventArgs e)
         {
