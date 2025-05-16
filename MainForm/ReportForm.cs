@@ -31,6 +31,37 @@ namespace MainForm
             labelTotalIncome.Text = $"{income} грн";
             labeltotalExpenses.Text = $"{expenses} грн";
             labelNetBalance.Text = $"{balance} грн";
+
+            DisplayStatisticsTable();
+        }
+        private void DisplayStatisticsTable()
+        {
+            dataGridViewStatistics.Rows.Clear();
+            dataGridViewStatistics.Columns.Clear();
+
+            dataGridViewStatistics.Columns.Add("Metric", "Показник");
+            dataGridViewStatistics.Columns.Add("Value", "Значення");
+
+            dataGridViewStatistics.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewStatistics.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            dataGridViewStatistics.Rows.Add("Кількість транзакцій", _reportService.GetTransactionCount());
+            dataGridViewStatistics.Rows.Add("Кількість доходів", _reportService.GetIncomeTransactionCount());
+            dataGridViewStatistics.Rows.Add("Кількість витрат", _reportService.GetExpenseTransactionCount());
+            dataGridViewStatistics.Rows.Add("Середній дохід", $"{_reportService.GetAverageIncome():F2} грн");
+            dataGridViewStatistics.Rows.Add("Середні витрати", $"{_reportService.GetAverageExpense():F2} грн");
+
+            var largestIncome = _reportService.GetLargestIncome();
+            if (largestIncome != null)
+            {
+                dataGridViewStatistics.Rows.Add("Найбільший дохід", $"{largestIncome.Amount} грн ({largestIncome.Category})");
+            }
+
+            var largestExpense = _reportService.GetLargestExpense();
+            if (largestExpense != null)
+            {
+                dataGridViewStatistics.Rows.Add("Найбільша витрата", $"{largestExpense.Amount} грн ({largestExpense.Category})");
+            }
         }
 
         private void buttonSaveReportToFile_Click_1(object sender, EventArgs e)

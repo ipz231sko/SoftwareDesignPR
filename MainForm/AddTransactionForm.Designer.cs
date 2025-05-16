@@ -51,10 +51,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(-2, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 48);
+            this.panel1.Size = new System.Drawing.Size(706, 56);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -62,7 +63,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.MediumSlateBlue;
-            this.label1.Location = new System.Drawing.Point(151, 6);
+            this.label1.Location = new System.Drawing.Point(227, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(282, 33);
             this.label1.TabIndex = 0;
@@ -210,7 +211,7 @@
             this.buttonClose.BackColor = System.Drawing.Color.Transparent;
             this.buttonClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonClose.BackgroundImage")));
             this.buttonClose.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonClose.Location = new System.Drawing.Point(672, 1);
+            this.buttonClose.Location = new System.Drawing.Point(660, 10);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(32, 32);
             this.buttonClose.TabIndex = 15;
@@ -223,7 +224,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(702, 450);
-            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.comboBoxSubCategory);
             this.Controls.Add(this.labelSubCategory);
             this.Controls.Add(this.textBoxTransactionDescription);
