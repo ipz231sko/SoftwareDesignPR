@@ -23,6 +23,7 @@ namespace MainForm
             listViewLastTransaction.Columns.Add("Дата", 100);
             listViewLastTransaction.Columns.Add("Тип", 80);
             listViewLastTransaction.Columns.Add("Категорія", 150);
+            listViewLastTransaction.Columns.Add("Підкатегорія", 150);
             listViewLastTransaction.Columns.Add("Сума", 80);
             listViewLastTransaction.Columns.Add("Опис", 200);
             _budgetService = new BudgetService(new FileTransactionRepository());
@@ -46,6 +47,7 @@ namespace MainForm
                 var item = new ListViewItem(transaction.Date.ToShortDateString());
                 item.SubItems.Add(transaction.Type);
                 item.SubItems.Add(transaction.Category);
+                item.SubItems.Add(transaction.Subcategory);
                 item.SubItems.Add($"{transaction.Amount} грн");
                 item.SubItems.Add(transaction.Description);
                 listViewLastTransaction.Items.Add(item);

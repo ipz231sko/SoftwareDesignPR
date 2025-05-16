@@ -1,5 +1,4 @@
-﻿using MainForm.Models;
-using MainForm.Services;
+﻿using MainForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MainForm.Models;
+using MainForm.Data;
 
 namespace MainForm
 {
@@ -34,6 +34,7 @@ namespace MainForm
 
             var type = comboBoxTransictionType.SelectedItem.ToString();
             var category = comboBoxTransactionCategory.SelectedItem?.ToString() ?? "";
+            var subcategory = comboBoxSubCategory.Visible ? comboBoxSubCategory.SelectedItem?.ToString() ?? "" : "";
             var description = textBoxTransactionDescription.Text;
             var date = dateTimePickerTransaction.Value;
 
@@ -45,6 +46,7 @@ namespace MainForm
                 {
                     Amount = amount,
                     Category = category,
+                    Subcategory = subcategory,
                     Description = description,
                     Date = date
                 };
@@ -55,6 +57,7 @@ namespace MainForm
                 {
                     Amount = amount,
                     Category = category,
+                    Subcategory = subcategory,
                     Description = description,
                     Date = date
                 };
@@ -75,6 +78,63 @@ namespace MainForm
             comboBoxTransictionType.SelectedIndex = 0;
             comboBoxTransactionCategory.SelectedIndex = 0;
             dateTimePickerTransaction.Value = DateTime.Today;
+        }
+
+        private void comboBoxTransictionType_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            var selectedType = comboBoxTransictionType.SelectedItem?.ToString();
+
+            comboBoxTransactionCategory.Items.Clear();
+            comboBoxSubCategory.Items.Clear();
+
+            if (selectedType == "Витрата")
+            {
+                comboBoxTransactionCategory.Items.AddRange(CategoryData.ExpenseCategories.Keys.ToArray());
+                comboBoxTransactionCategory.Enabled = true;
+                comboBoxSubCategory.Visible = true;
+                labelSubCategory.Visible = true;
+            }
+            else if (selectedType == "Дохід")
+            {
+                comboBoxTransactionCategory.Items.AddRange(CategoryData.IncomeCategories.ToArray());
+                comboBoxTransactionCategory.Enabled = true;
+                comboBoxSubCategory.Visible = false;
+                labelSubCategory.Visible = false;
+            }
+
+            if (comboBoxTransactionCategory.Items.Count > 0)
+                comboBoxTransactionCategory.SelectedIndex = 0;
+        }
+
+        private void comboBoxTransactionCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxTransictionType.SelectedItem?.ToString() == "Витрата")
+            {
+                var selectedCategory = comboBoxTransactionCategory.SelectedItem?.ToString();
+                comboBoxSubCategory.Items.Clear();
+
+                if (!string.IsNullOrEmpty(selectedCategory) && CategoryData.ExpenseCategories.ContainsKey(selectedCategory))
+                {
+                    var subcategories = CategoryData.ExpenseCategories[selectedCategory];
+
+                    if (subcategories.Count > 0)
+                    {
+                        comboBoxSubCategory.Enabled = true;
+                        comboBoxSubCategory.Visible = true;
+                        labelSubCategory.Visible = true;
+
+                        comboBoxSubCategory.Items.AddRange(subcategories.ToArray());
+                        comboBoxSubCategory.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        comboBoxSubCategory.Enabled = false;
+                        comboBoxSubCategory.Visible = false;
+                        labelSubCategory.Visible = false;
+                        comboBoxSubCategory.Text = string.Empty;
+                    }
+                }
+            }
         }
     }
 }
