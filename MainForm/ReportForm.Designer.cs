@@ -1,6 +1,6 @@
 ﻿namespace MainForm
 {
-    partial class ReportForm
+    public partial class ReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,7 @@
             this.checkBoxByCategory = new System.Windows.Forms.CheckBox();
             this.checkBoxByCategoryAndSub = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridViewStatistics = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -50,10 +51,11 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(8, 284);
+            this.label1.Location = new System.Drawing.Point(30, 327);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 22);
             this.label1.TabIndex = 0;
@@ -61,10 +63,11 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(8, 346);
+            this.label2.Location = new System.Drawing.Point(30, 389);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 22);
             this.label2.TabIndex = 1;
@@ -72,10 +75,11 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(8, 410);
+            this.label3.Location = new System.Drawing.Point(30, 453);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(146, 22);
             this.label3.TabIndex = 2;
@@ -83,8 +87,9 @@
             // 
             // buttonSaveReportToFile
             // 
+            this.buttonSaveReportToFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSaveReportToFile.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSaveReportToFile.Location = new System.Drawing.Point(599, 335);
+            this.buttonSaveReportToFile.Location = new System.Drawing.Point(620, 362);
             this.buttonSaveReportToFile.Name = "buttonSaveReportToFile";
             this.buttonSaveReportToFile.Size = new System.Drawing.Size(136, 47);
             this.buttonSaveReportToFile.TabIndex = 3;
@@ -94,9 +99,10 @@
             // 
             // labelTotalIncome
             // 
+            this.labelTotalIncome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelTotalIncome.AutoSize = true;
             this.labelTotalIncome.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalIncome.Location = new System.Drawing.Point(196, 289);
+            this.labelTotalIncome.Location = new System.Drawing.Point(218, 332);
             this.labelTotalIncome.Name = "labelTotalIncome";
             this.labelTotalIncome.Size = new System.Drawing.Size(51, 19);
             this.labelTotalIncome.TabIndex = 5;
@@ -104,9 +110,10 @@
             // 
             // labeltotalExpenses
             // 
+            this.labeltotalExpenses.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labeltotalExpenses.AutoSize = true;
             this.labeltotalExpenses.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeltotalExpenses.Location = new System.Drawing.Point(196, 352);
+            this.labeltotalExpenses.Location = new System.Drawing.Point(218, 395);
             this.labeltotalExpenses.Name = "labeltotalExpenses";
             this.labeltotalExpenses.Size = new System.Drawing.Size(51, 19);
             this.labeltotalExpenses.TabIndex = 6;
@@ -114,9 +121,10 @@
             // 
             // labelNetBalance
             // 
+            this.labelNetBalance.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelNetBalance.AutoSize = true;
             this.labelNetBalance.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNetBalance.Location = new System.Drawing.Point(196, 426);
+            this.labelNetBalance.Location = new System.Drawing.Point(218, 456);
             this.labelNetBalance.Name = "labelNetBalance";
             this.labelNetBalance.Size = new System.Drawing.Size(51, 19);
             this.labelNetBalance.TabIndex = 7;
@@ -126,7 +134,7 @@
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Transparent;
             this.buttonClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonClose.BackgroundImage")));
-            this.buttonClose.Location = new System.Drawing.Point(728, 10);
+            this.buttonClose.Location = new System.Drawing.Point(742, 7);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(32, 32);
             this.buttonClose.TabIndex = 9;
@@ -135,9 +143,10 @@
             // 
             // checkBoxAvg
             // 
+            this.checkBoxAvg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxAvg.AutoSize = true;
             this.checkBoxAvg.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxAvg.Location = new System.Drawing.Point(329, 311);
+            this.checkBoxAvg.Location = new System.Drawing.Point(330, 330);
             this.checkBoxAvg.Name = "checkBoxAvg";
             this.checkBoxAvg.Size = new System.Drawing.Size(191, 21);
             this.checkBoxAvg.TabIndex = 11;
@@ -146,9 +155,10 @@
             // 
             // checkBoxLargest
             // 
+            this.checkBoxLargest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxLargest.AutoSize = true;
             this.checkBoxLargest.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxLargest.Location = new System.Drawing.Point(329, 337);
+            this.checkBoxLargest.Location = new System.Drawing.Point(330, 376);
             this.checkBoxLargest.Name = "checkBoxLargest";
             this.checkBoxLargest.Size = new System.Drawing.Size(170, 21);
             this.checkBoxLargest.TabIndex = 12;
@@ -157,9 +167,10 @@
             // 
             // checkBoxByCategory
             // 
+            this.checkBoxByCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxByCategory.AutoSize = true;
             this.checkBoxByCategory.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxByCategory.Location = new System.Drawing.Point(329, 373);
+            this.checkBoxByCategory.Location = new System.Drawing.Point(330, 415);
             this.checkBoxByCategory.Name = "checkBoxByCategory";
             this.checkBoxByCategory.Size = new System.Drawing.Size(189, 21);
             this.checkBoxByCategory.TabIndex = 13;
@@ -168,9 +179,10 @@
             // 
             // checkBoxByCategoryAndSub
             // 
+            this.checkBoxByCategoryAndSub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxByCategoryAndSub.AutoSize = true;
             this.checkBoxByCategoryAndSub.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxByCategoryAndSub.Location = new System.Drawing.Point(329, 399);
+            this.checkBoxByCategoryAndSub.Location = new System.Drawing.Point(330, 453);
             this.checkBoxByCategoryAndSub.Name = "checkBoxByCategoryAndSub";
             this.checkBoxByCategoryAndSub.Size = new System.Drawing.Size(300, 21);
             this.checkBoxByCategoryAndSub.TabIndex = 14;
@@ -180,40 +192,40 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.buttonClose);
-            this.panel1.Location = new System.Drawing.Point(1, 3);
+            this.panel1.Location = new System.Drawing.Point(1, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(771, 56);
-            this.panel1.TabIndex = 16;
+            this.panel1.Size = new System.Drawing.Size(787, 48);
+            this.panel1.TabIndex = 15;
             // 
-            // label6
+            // label4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.Color.MediumSlateBlue;
-            this.label6.Location = new System.Drawing.Point(241, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(272, 33);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Звіт та статистика";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.MediumSlateBlue;
+            this.label4.Location = new System.Drawing.Point(269, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(272, 33);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Звіт та статистика";
             // 
             // dataGridViewStatistics
             // 
             this.dataGridViewStatistics.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStatistics.Location = new System.Drawing.Point(10, 76);
+            this.dataGridViewStatistics.Location = new System.Drawing.Point(5, 62);
             this.dataGridViewStatistics.Name = "dataGridViewStatistics";
             this.dataGridViewStatistics.RowHeadersWidth = 51;
             this.dataGridViewStatistics.RowTemplate.Height = 24;
-            this.dataGridViewStatistics.Size = new System.Drawing.Size(750, 196);
-            this.dataGridViewStatistics.TabIndex = 17;
+            this.dataGridViewStatistics.Size = new System.Drawing.Size(769, 250);
+            this.dataGridViewStatistics.TabIndex = 16;
             // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(773, 450);
+            this.ClientSize = new System.Drawing.Size(787, 486);
             this.Controls.Add(this.dataGridViewStatistics);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBoxByCategoryAndSub);
@@ -253,6 +265,7 @@
         private System.Windows.Forms.CheckBox checkBoxByCategory;
         private System.Windows.Forms.CheckBox checkBoxByCategoryAndSub;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridViewStatistics;
     }

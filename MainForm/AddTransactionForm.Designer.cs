@@ -53,9 +53,15 @@
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Controls.Add(this.label1);
+<<<<<<< HEAD
+            this.panel1.Location = new System.Drawing.Point(1, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(701, 48);
+=======
             this.panel1.Location = new System.Drawing.Point(-2, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 56);
+>>>>>>> main
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -63,7 +69,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.MediumSlateBlue;
+<<<<<<< HEAD
+            this.label1.Location = new System.Drawing.Point(202, 6);
+=======
             this.label1.Location = new System.Drawing.Point(227, 9);
+>>>>>>> main
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(282, 33);
             this.label1.TabIndex = 0;
@@ -71,12 +81,13 @@
             // 
             // comboBoxTransictionType
             // 
+            this.comboBoxTransictionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTransictionType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxTransictionType.FormattingEnabled = true;
             this.comboBoxTransictionType.Items.AddRange(new object[] {
             "Дохід",
             "Витрата"});
-            this.comboBoxTransictionType.Location = new System.Drawing.Point(203, 92);
+            this.comboBoxTransictionType.Location = new System.Drawing.Point(203, 66);
             this.comboBoxTransictionType.Name = "comboBoxTransictionType";
             this.comboBoxTransictionType.Size = new System.Drawing.Size(169, 24);
             this.comboBoxTransictionType.TabIndex = 2;
@@ -84,11 +95,12 @@
             // 
             // comboBoxTransactionCategory
             // 
+            this.comboBoxTransactionCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTransactionCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxTransactionCategory.FormattingEnabled = true;
             this.comboBoxTransactionCategory.Items.AddRange(new object[] {
             "Комунальні та абонплата"});
-            this.comboBoxTransactionCategory.Location = new System.Drawing.Point(203, 273);
+            this.comboBoxTransactionCategory.Location = new System.Drawing.Point(203, 247);
             this.comboBoxTransactionCategory.Name = "comboBoxTransactionCategory";
             this.comboBoxTransactionCategory.Size = new System.Drawing.Size(169, 24);
             this.comboBoxTransactionCategory.TabIndex = 3;
@@ -96,10 +108,11 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label2.Location = new System.Drawing.Point(25, 92);
+            this.label2.Location = new System.Drawing.Point(25, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 23);
             this.label2.TabIndex = 4;
@@ -107,10 +120,11 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label3.Location = new System.Drawing.Point(25, 150);
+            this.label3.Location = new System.Drawing.Point(25, 124);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 23);
             this.label3.TabIndex = 5;
@@ -118,10 +132,11 @@
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label4.Location = new System.Drawing.Point(25, 209);
+            this.label4.Location = new System.Drawing.Point(25, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 23);
             this.label4.TabIndex = 6;
@@ -129,10 +144,11 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label5.Location = new System.Drawing.Point(25, 270);
+            this.label5.Location = new System.Drawing.Point(25, 244);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 23);
             this.label5.TabIndex = 7;
@@ -140,10 +156,11 @@
             // 
             // label6
             // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.GhostWhite;
-            this.label6.Location = new System.Drawing.Point(25, 328);
+            this.label6.Location = new System.Drawing.Point(25, 307);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 23);
             this.label6.TabIndex = 8;
@@ -155,7 +172,7 @@
             this.buttonTransactionSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTransactionSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonTransactionSave.ForeColor = System.Drawing.Color.DarkBlue;
-            this.buttonTransactionSave.Location = new System.Drawing.Point(203, 391);
+            this.buttonTransactionSave.Location = new System.Drawing.Point(287, 378);
             this.buttonTransactionSave.Name = "buttonTransactionSave";
             this.buttonTransactionSave.Size = new System.Drawing.Size(183, 47);
             this.buttonTransactionSave.TabIndex = 9;
@@ -165,21 +182,24 @@
             // 
             // dateTimePickerTransaction
             // 
-            this.dateTimePickerTransaction.Location = new System.Drawing.Point(204, 153);
+            this.dateTimePickerTransaction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerTransaction.Location = new System.Drawing.Point(204, 127);
             this.dateTimePickerTransaction.Name = "dateTimePickerTransaction";
             this.dateTimePickerTransaction.Size = new System.Drawing.Size(167, 22);
             this.dateTimePickerTransaction.TabIndex = 10;
             // 
             // textBoxSum
             // 
-            this.textBoxSum.Location = new System.Drawing.Point(204, 216);
+            this.textBoxSum.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSum.Location = new System.Drawing.Point(204, 190);
             this.textBoxSum.Name = "textBoxSum";
             this.textBoxSum.Size = new System.Drawing.Size(166, 22);
             this.textBoxSum.TabIndex = 11;
             // 
             // textBoxTransactionDescription
             // 
-            this.textBoxTransactionDescription.Location = new System.Drawing.Point(204, 328);
+            this.textBoxTransactionDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxTransactionDescription.Location = new System.Drawing.Point(204, 307);
             this.textBoxTransactionDescription.Name = "textBoxTransactionDescription";
             this.textBoxTransactionDescription.Size = new System.Drawing.Size(166, 22);
             this.textBoxTransactionDescription.TabIndex = 12;
@@ -189,18 +209,18 @@
             this.labelSubCategory.AutoSize = true;
             this.labelSubCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSubCategory.ForeColor = System.Drawing.Color.GhostWhite;
-            this.labelSubCategory.Location = new System.Drawing.Point(416, 236);
+            this.labelSubCategory.Location = new System.Drawing.Point(385, 247);
             this.labelSubCategory.Name = "labelSubCategory";
-            this.labelSubCategory.Size = new System.Drawing.Size(103, 23);
+            this.labelSubCategory.Size = new System.Drawing.Size(129, 23);
             this.labelSubCategory.TabIndex = 13;
-            this.labelSubCategory.Text = "Категорія:";
+            this.labelSubCategory.Text = "Підкатегорія:";
             this.labelSubCategory.Visible = false;
             // 
             // comboBoxSubCategory
             // 
             this.comboBoxSubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxSubCategory.FormattingEnabled = true;
-            this.comboBoxSubCategory.Location = new System.Drawing.Point(420, 273);
+            this.comboBoxSubCategory.Location = new System.Drawing.Point(521, 247);
             this.comboBoxSubCategory.Name = "comboBoxSubCategory";
             this.comboBoxSubCategory.Size = new System.Drawing.Size(169, 24);
             this.comboBoxSubCategory.TabIndex = 14;
@@ -211,7 +231,11 @@
             this.buttonClose.BackColor = System.Drawing.Color.Transparent;
             this.buttonClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonClose.BackgroundImage")));
             this.buttonClose.ForeColor = System.Drawing.Color.Transparent;
+<<<<<<< HEAD
+            this.buttonClose.Location = new System.Drawing.Point(657, 7);
+=======
             this.buttonClose.Location = new System.Drawing.Point(660, 10);
+>>>>>>> main
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(32, 32);
             this.buttonClose.TabIndex = 15;
