@@ -1,6 +1,6 @@
 ﻿namespace MainForm
 {
-    partial class ReportForm
+    public partial class ReportForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.checkBoxByCategoryAndSub = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataGridViewStatistics = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStatistics)).BeginInit();
@@ -265,6 +266,7 @@
         private System.Windows.Forms.CheckBox checkBoxByCategoryAndSub;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridViewStatistics;
     }
 }
