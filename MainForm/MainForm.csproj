@@ -96,6 +96,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ITransactionRepository.cs" />
+    <Compile Include="Models\CategorySubcategoryKey.cs" />
     <Compile Include="Models\Expence.cs" />
     <Compile Include="Models\Income.cs" />
     <Compile Include="Models\Transaction.cs" />
@@ -109,6 +110,7 @@
     </Compile>
     <Compile Include="Services\BudgetService.cs" />
     <Compile Include="Services\FilterService.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="TransactionListForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +153,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="icons\close.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

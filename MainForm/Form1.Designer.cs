@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonCreateReport = new System.Windows.Forms.Button();
             this.buttonViewAllTransaction = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.labelCurrentBalance = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listViewLastTransaction = new System.Windows.Forms.ListView();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,10 +124,23 @@
             this.listViewLastTransaction.TabIndex = 1;
             this.listViewLastTransaction.UseCompatibleStateImageBehavior = false;
             // 
+            // buttonClose
+            // 
+            this.buttonClose.BackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonClose.BackgroundImage")));
+            this.buttonClose.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonClose.Location = new System.Drawing.Point(804, 0);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(32, 32);
+            this.buttonClose.TabIndex = 10;
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(833, 450);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.listViewLastTransaction);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -146,5 +161,6 @@
         private System.Windows.Forms.Label labelCurrentBalance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListView listViewLastTransaction;
+        private System.Windows.Forms.Button buttonClose;
     }
 }

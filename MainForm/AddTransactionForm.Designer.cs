@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTransactionForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxTransictionType = new System.Windows.Forms.ComboBox();
@@ -43,16 +44,18 @@
             this.textBoxTransactionDescription = new System.Windows.Forms.TextBox();
             this.labelSubCategory = new System.Windows.Forms.Label();
             this.comboBoxSubCategory = new System.Windows.Forms.ComboBox();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(-2, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(608, 48);
+            this.panel1.Size = new System.Drawing.Size(706, 56);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -60,7 +63,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.MediumSlateBlue;
-            this.label1.Location = new System.Drawing.Point(151, 6);
+            this.label1.Location = new System.Drawing.Point(227, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(282, 33);
             this.label1.TabIndex = 0;
@@ -203,12 +206,24 @@
             this.comboBoxSubCategory.TabIndex = 14;
             this.comboBoxSubCategory.Visible = false;
             // 
+            // buttonClose
+            // 
+            this.buttonClose.BackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonClose.BackgroundImage")));
+            this.buttonClose.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonClose.Location = new System.Drawing.Point(660, 10);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(32, 32);
+            this.buttonClose.TabIndex = 15;
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // AddTransactionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(645, 450);
+            this.ClientSize = new System.Drawing.Size(702, 450);
             this.Controls.Add(this.comboBoxSubCategory);
             this.Controls.Add(this.labelSubCategory);
             this.Controls.Add(this.textBoxTransactionDescription);
@@ -250,5 +265,6 @@
         private System.Windows.Forms.TextBox textBoxTransactionDescription;
         private System.Windows.Forms.Label labelSubCategory;
         private System.Windows.Forms.ComboBox comboBoxSubCategory;
+        private System.Windows.Forms.Button buttonClose;
     }
 }
