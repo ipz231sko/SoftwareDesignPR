@@ -33,5 +33,57 @@ namespace MainForm.Services
                 .GroupBy(t => t.Category)
                 .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
         }
+        public Dictionary<string, decimal> GetIncomeByCategory()
+        {
+            return _transactions
+                .OfType<Income>()
+                .GroupBy(t => t.Category)
+                .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+        }
+
+        public Dictionary<CategorySubcategoryKey, decimal> GetExpenseByCategoryAndSubcategory()
+        {
+            return _transactions
+                .OfType<Expense>()
+                .GroupBy(t => new CategorySubcategoryKey(t.Category, t.Subcategory))
+                .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+        }
+
+        public int GetTransactionCount()
+        {
+            return _transactions.Count;
+        }
+
+        public int GetExpenseTransactionCount()
+        {
+            return _transactions.OfType<Expense>().Count();
+        }
+
+        public int GetIncomeTransactionCount()
+        {
+            return _transactions.OfType<Income>().Count();
+        }
+
+        public decimal GetAverageExpense()
+        {
+            var expenses = _transactions.OfType<Expense>().ToList();
+            return expenses.Any() ? expenses.Average(t => t.Amount) : 0;
+        }
+
+        public decimal GetAverageIncome()
+        {
+            var incomes = _transactions.OfType<Income>().ToList();
+            return incomes.Any() ? incomes.Average(t => t.Amount) : 0;
+        }
+
+        public Transaction GetLargestExpense()
+        {
+            return _transactions.OfType<Expense>().OrderByDescending(t => t.Amount).FirstOrDefault();
+        }
+
+        public Transaction GetLargestIncome()
+        {
+            return _transactions.OfType<Income>().OrderByDescending(t => t.Amount).FirstOrDefault();
+        }
     }
 }

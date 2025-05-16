@@ -28,17 +28,11 @@ namespace MainForm
             decimal expenses = _reportService.GetTotalExpense();
             decimal balance = income - expenses;
 
-            labelTotalIncome.Text = $"Загальний дохід: {income} грн";
-            labeltotalExpenses.Text = $"Загальні витрати: {expenses} грн";
-            labelNetBalance.Text = $"Чистий залишок: {balance} грн";
-
-            listBoxExpensesByCategory.Items.Clear();
-            listBoxExpensesByCategory.Items.Add("Витрати за категоріями:");
-            foreach (var pair in _reportService.GetExpenseByCategory())
-            {
-                listBoxExpensesByCategory.Items.Add($"{pair.Key}: {pair.Value} грн");
-            }
+            labelTotalIncome.Text = $"{income} грн";
+            labeltotalExpenses.Text = $"{expenses} грн";
+            labelNetBalance.Text = $"{balance} грн";
         }
+
 
         private void buttonSaveReportToFile_Click_1(object sender, EventArgs e)
         {
@@ -61,10 +55,54 @@ namespace MainForm
                     $"Чистий залишок: {balance} грн"
                 };
 
+                if (checkBoxAvg.Checked)
+                {
+                    lines.Add($"Середній дохід: {_reportService.GetAverageIncome():F2} грн");
+                    lines.Add($"Середні витрати: {_reportService.GetAverageExpense():F2} грн");
+                }
+
+                if (checkBoxLargest.Checked)
+                {
+                    var largestIncome = _reportService.GetLargestIncome();
+                    var largestExpense = _reportService.GetLargestExpense();
+                    if (largestIncome != null)
+                        lines.Add($"Найбільший дохід: {largestIncome.Amount} грн ({largestIncome.Category})");
+                    if (largestExpense != null)
+                        lines.Add($"Найбільша витрата: {largestExpense.Amount} грн ({largestExpense.Category})");
+                }
+
+                if (checkBoxByCategory.Checked)
+                {
+                    lines.Add("Витрати за категоріями:");
+                    foreach (var pair in _reportService.GetExpenseByCategory())
+                    {
+                        lines.Add($"{pair.Key}: {pair.Value} грн");
+                    }
+                }
+
+                if (checkBoxByCategoryAndSub.Checked)
+                {
+                    lines.Add("Витрати за категоріями та підкатегоріями:");
+                    foreach (var pair in _reportService.GetExpenseByCategoryAndSubcategory())
+                    {
+                        lines.Add($"{pair.Key.Category} - {pair.Key.Subcategory}: {pair.Value} грн");
+                    }
+                }
+
                 File.WriteAllLines(saveDialog.FileName, lines);
 
                 MessageBox.Show("Звіт успішно збережено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

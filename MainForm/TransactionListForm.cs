@@ -137,5 +137,10 @@ namespace MainForm
             comboBoxSubcategoryFilter.Items.Clear();
             comboBoxSubcategoryFilter.Items.Add("Усі");
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

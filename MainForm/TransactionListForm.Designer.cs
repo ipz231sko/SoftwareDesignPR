@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransactionListForm));
             this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
             this.comboBoxFilter = new System.Windows.Forms.ComboBox();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
@@ -41,6 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxSubcategoryFilter = new System.Windows.Forms.ComboBox();
+            this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -185,12 +187,25 @@
             this.comboBoxSubcategoryFilter.Size = new System.Drawing.Size(169, 24);
             this.comboBoxSubcategoryFilter.TabIndex = 12;
             // 
+            // buttonClose
+            // 
+            this.buttonClose.BackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonClose.BackgroundImage")));
+            this.buttonClose.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonClose.Location = new System.Drawing.Point(1124, -1);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(32, 32);
+            this.buttonClose.TabIndex = 14;
+            this.buttonClose.UseVisualStyleBackColor = false;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // TransactionListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1156, 435);
+            this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxSubcategoryFilter);
             this.Controls.Add(this.label4);
@@ -228,5 +243,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxSubcategoryFilter;
+        private System.Windows.Forms.Button buttonClose;
     }
 }

@@ -76,5 +76,10 @@ namespace MainForm
             var reportForm = new ReportForm(_budgetService);
             reportForm.Show();
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
