@@ -18,11 +18,11 @@ namespace MainForm.Data
                 var type = root.GetProperty("Type").GetString();
 
                 Transaction transaction;
-                if (type == "Income")
+                if (type == "Дохід")
                 {
                     transaction = new Income();
                 }
-                else if (type == "Expense")
+                else if (type == "Витрата")
                 {
                     transaction = new Expense();
                 }

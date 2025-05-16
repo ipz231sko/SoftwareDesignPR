@@ -148,4 +148,3 @@
         private System.Windows.Forms.ListView listViewLastTransaction;
     }
 }
-
