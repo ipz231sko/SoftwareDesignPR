@@ -14,23 +14,33 @@ namespace MainForm
     public partial class ReportForm : Form
     {
         private readonly BudgetService _budgetService;
+        private ReportService _reportService;
         public ReportForm(BudgetService budgetService)
         {
             InitializeComponent();
             _budgetService = budgetService;
+            _reportService = new ReportService(_budgetService.Transactions);
             DisplayReport();
         }
         private void DisplayReport()
         {
-            decimal income = _budgetService.GetTotalIncome();
-            decimal expenses = _budgetService.GetTotalExpense();
-            decimal balance = _budgetService.GetBalance();
+            decimal income = _reportService.GetTotalIncome();
+            decimal expenses = _reportService.GetTotalExpense();
+            decimal balance = income - expenses;
 
             labelTotalIncome.Text = $"Загальний дохід: {income} грн";
             labeltotalExpenses.Text = $"Загальні витрати: {expenses} грн";
             labelNetBalance.Text = $"Чистий залишок: {balance} грн";
+
+            listBoxExpensesByCategory.Items.Clear();
+            listBoxExpensesByCategory.Items.Add("Витрати за категоріями:");
+            foreach (var pair in _reportService.GetExpenseByCategory())
+            {
+                listBoxExpensesByCategory.Items.Add($"{pair.Key}: {pair.Value} грн");
+            }
         }
-        private void buttonSaveReportToFile_Click(object sender, EventArgs e)
+
+        private void buttonSaveReportToFile_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog saveDialog = new SaveFileDialog();
             saveDialog.Filter = "Текстові файли (*.txt)|*.txt";
@@ -38,18 +48,18 @@ namespace MainForm
 
             if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                decimal income = _budgetService.GetTotalIncome();
-                decimal expenses = _budgetService.GetTotalExpense();
-                decimal balance = _budgetService.GetBalance();
+                decimal income = _reportService.GetTotalIncome();
+                decimal expenses = _reportService.GetTotalExpense();
+                decimal balance = income - expenses;
 
                 var lines = new List<string>
-        {
-            "Звіт про фінанси",
-            $"Дата: {DateTime.Now}",
-            $"Загальний дохід: {income} грн",
-            $"Загальні витрати: {expenses} грн",
-            $"Чистий залишок: {balance} грн"
-        };
+                {
+                    "Звіт про фінанси",
+                    $"Дата: {DateTime.Now}",
+                    $"Загальний дохід: {income} грн",
+                    $"Загальні витрати: {expenses} грн",
+                    $"Чистий залишок: {balance} грн"
+                };
 
                 File.WriteAllLines(saveDialog.FileName, lines);
 

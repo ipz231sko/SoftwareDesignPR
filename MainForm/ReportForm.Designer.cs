@@ -35,6 +35,7 @@
             this.labelTotalIncome = new System.Windows.Forms.Label();
             this.labeltotalExpenses = new System.Windows.Forms.Label();
             this.labelNetBalance = new System.Windows.Forms.Label();
+            this.listBoxExpensesByCategory = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -79,6 +80,7 @@
             this.buttonSaveReportToFile.TabIndex = 3;
             this.buttonSaveReportToFile.Text = "Зберегти звіт у файлі";
             this.buttonSaveReportToFile.UseVisualStyleBackColor = true;
+            this.buttonSaveReportToFile.Click += new System.EventHandler(this.buttonSaveReportToFile_Click_1);
             // 
             // labelTotalIncome
             // 
@@ -107,12 +109,22 @@
             this.labelNetBalance.TabIndex = 7;
             this.labelNetBalance.Text = "label7";
             // 
+            // listBoxExpensesByCategory
+            // 
+            this.listBoxExpensesByCategory.FormattingEnabled = true;
+            this.listBoxExpensesByCategory.ItemHeight = 16;
+            this.listBoxExpensesByCategory.Location = new System.Drawing.Point(381, 75);
+            this.listBoxExpensesByCategory.Name = "listBoxExpensesByCategory";
+            this.listBoxExpensesByCategory.Size = new System.Drawing.Size(301, 196);
+            this.listBoxExpensesByCategory.TabIndex = 8;
+            // 
             // ReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(527, 450);
+            this.ClientSize = new System.Drawing.Size(715, 450);
+            this.Controls.Add(this.listBoxExpensesByCategory);
             this.Controls.Add(this.labelNetBalance);
             this.Controls.Add(this.labeltotalExpenses);
             this.Controls.Add(this.labelTotalIncome);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.Label labelTotalIncome;
         private System.Windows.Forms.Label labeltotalExpenses;
         private System.Windows.Forms.Label labelNetBalance;
+        private System.Windows.Forms.ListBox listBoxExpensesByCategory;
     }
 }
