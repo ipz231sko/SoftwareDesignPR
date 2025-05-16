@@ -41,8 +41,8 @@
             this.dateTimePickerTransaction = new System.Windows.Forms.DateTimePicker();
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.textBoxTransactionDescription = new System.Windows.Forms.TextBox();
-            this.comboBoxSubCategory = new System.Windows.Forms.ComboBox();
             this.labelSubCategory = new System.Windows.Forms.Label();
+            this.comboBoxSubCategory = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,12 +77,14 @@
             this.comboBoxTransictionType.Name = "comboBoxTransictionType";
             this.comboBoxTransictionType.Size = new System.Drawing.Size(169, 24);
             this.comboBoxTransictionType.TabIndex = 2;
-            this.comboBoxTransictionType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransictionType_SelectedIndexChanged);
+            this.comboBoxTransictionType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransictionType_SelectedIndexChanged_1);
             // 
             // comboBoxTransactionCategory
             // 
             this.comboBoxTransactionCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxTransactionCategory.FormattingEnabled = true;
+            this.comboBoxTransactionCategory.Items.AddRange(new object[] {
+            "Комунальні та абонплата"});
             this.comboBoxTransactionCategory.Location = new System.Drawing.Point(203, 273);
             this.comboBoxTransactionCategory.Name = "comboBoxTransactionCategory";
             this.comboBoxTransactionCategory.Size = new System.Drawing.Size(169, 24);
@@ -179,27 +181,27 @@
             this.textBoxTransactionDescription.Size = new System.Drawing.Size(166, 22);
             this.textBoxTransactionDescription.TabIndex = 12;
             // 
-            // comboBoxSubCategory
-            // 
-            this.comboBoxSubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxSubCategory.FormattingEnabled = true;
-            this.comboBoxSubCategory.Location = new System.Drawing.Point(442, 273);
-            this.comboBoxSubCategory.Name = "comboBoxSubCategory";
-            this.comboBoxSubCategory.Size = new System.Drawing.Size(178, 24);
-            this.comboBoxSubCategory.TabIndex = 13;
-            this.comboBoxSubCategory.Visible = false;
-            // 
             // labelSubCategory
             // 
             this.labelSubCategory.AutoSize = true;
             this.labelSubCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSubCategory.ForeColor = System.Drawing.Color.GhostWhite;
-            this.labelSubCategory.Location = new System.Drawing.Point(438, 231);
+            this.labelSubCategory.Location = new System.Drawing.Point(416, 236);
             this.labelSubCategory.Name = "labelSubCategory";
             this.labelSubCategory.Size = new System.Drawing.Size(103, 23);
-            this.labelSubCategory.TabIndex = 14;
+            this.labelSubCategory.TabIndex = 13;
             this.labelSubCategory.Text = "Категорія:";
             this.labelSubCategory.Visible = false;
+            // 
+            // comboBoxSubCategory
+            // 
+            this.comboBoxSubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxSubCategory.FormattingEnabled = true;
+            this.comboBoxSubCategory.Location = new System.Drawing.Point(420, 273);
+            this.comboBoxSubCategory.Name = "comboBoxSubCategory";
+            this.comboBoxSubCategory.Size = new System.Drawing.Size(169, 24);
+            this.comboBoxSubCategory.TabIndex = 14;
+            this.comboBoxSubCategory.Visible = false;
             // 
             // AddTransactionForm
             // 
@@ -207,8 +209,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(645, 450);
-            this.Controls.Add(this.labelSubCategory);
             this.Controls.Add(this.comboBoxSubCategory);
+            this.Controls.Add(this.labelSubCategory);
             this.Controls.Add(this.textBoxTransactionDescription);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.dateTimePickerTransaction);
@@ -246,7 +248,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerTransaction;
         private System.Windows.Forms.TextBox textBoxSum;
         private System.Windows.Forms.TextBox textBoxTransactionDescription;
-        private System.Windows.Forms.ComboBox comboBoxSubCategory;
         private System.Windows.Forms.Label labelSubCategory;
+        private System.Windows.Forms.ComboBox comboBoxSubCategory;
     }
 }

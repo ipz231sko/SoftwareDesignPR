@@ -18,11 +18,11 @@ namespace MainForm.Data
                 var type = root.GetProperty("Type").GetString();
 
                 Transaction transaction;
-                if (type == "Income")
+                if (type == "Дохід")
                 {
                     transaction = new Income();
                 }
-                else if (type == "Expense")
+                else if (type == "Витрата")
                 {
                     transaction = new Expense();
                 }
@@ -34,6 +34,9 @@ namespace MainForm.Data
                 transaction.Date = root.GetProperty("Date").GetDateTime();
                 transaction.Amount = root.GetProperty("Amount").GetDecimal();
                 transaction.Category = root.GetProperty("Category").GetString();
+                transaction.Subcategory = root.TryGetProperty("Subcategory", out var subcatProp)
+                    ? subcatProp.GetString()
+                    : string.Empty;
                 transaction.Description = root.GetProperty("Description").GetString();
 
                 return transaction;
@@ -46,6 +49,7 @@ namespace MainForm.Data
             writer.WriteString("Date", value.Date);
             writer.WriteNumber("Amount", value.Amount);
             writer.WriteString("Category", value.Category);
+            writer.WriteString("Subcategory", value.Subcategory);
             writer.WriteString("Description", value.Description);
             writer.WriteEndObject();
         }

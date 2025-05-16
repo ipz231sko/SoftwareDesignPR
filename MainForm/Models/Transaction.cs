@@ -11,6 +11,7 @@ namespace MainForm.Models
         public DateTime Date { get; set; }
         public decimal Amount { get; set; }
         public string Category { get; set; }
+        public string Subcategory { get; set; }
         public string Description { get; set; }
         public abstract string Type { get; }
     }

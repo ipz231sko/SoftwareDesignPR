@@ -81,6 +81,7 @@
             this.comboBoxTransactionCategory.Name = "comboBoxTransactionCategory";
             this.comboBoxTransactionCategory.Size = new System.Drawing.Size(169, 24);
             this.comboBoxTransactionCategory.TabIndex = 4;
+            this.comboBoxTransactionCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransactionCategory_SelectedIndexChanged);
             // 
             // dateTimePickerTo
             // 
