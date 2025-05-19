@@ -56,13 +56,13 @@ namespace MainForm
 
             string internalType = selectedType == "Усі" ? null : selectedType;
 
-            var filtered = _budgetService.Transactions.Where(t =>
-                (selectedType == "Усі" || t.Type == selectedType) &&
-                (selectedCategory == "Усі" || t.Category == selectedCategory) &&
-                (selectedSubcategory == "Усі" || string.IsNullOrEmpty(selectedSubcategory) || t.Subcategory == selectedSubcategory) &&
-                t.Date >= from && t.Date <= to
-            ).ToList();
-            MessageBox.Show($"Усього транзакцій: {_budgetService.Transactions.Count}\nПісля фільтрації: {filtered.Count()}");
+            var filtered = _budgetService.GetTransactions(from, to, selectedCategory == "Усі" ? null : selectedCategory, selectedType == "Усі" ? null : selectedType)
+.Where(t =>
+selectedSubcategory == "Усі" || string.IsNullOrEmpty(selectedSubcategory) || t.Subcategory == selectedSubcategory
+).ToList();
+
+            var allCount = _budgetService.GetTransactions().Count();
+            MessageBox.Show($"Усього транзакцій: {allCount}\nПісля фільтрації: {filtered.Count()}");
             foreach (var t in filtered)
             {
                 dataGridViewTransactions.Rows.Add(
@@ -100,13 +100,13 @@ namespace MainForm
             if (!DateTime.TryParse(dateStr, out DateTime date) || !decimal.TryParse(amountStr, out decimal amount))
                 return;
 
-            var target = _budgetService.Transactions.FirstOrDefault(t =>
-                t.Date.Date == date.Date &&
-                t.Type == type &&
-                t.Category == category &&
-                t.Subcategory == subcategory &&
-                t.Amount == amount &&
-                t.Description == description);
+            var target = _budgetService.GetTransactions().FirstOrDefault(t =>
+t.Date.Date == date.Date &&
+t.Type == type &&
+t.Category == category &&
+t.Subcategory == subcategory &&
+t.Amount == amount &&
+t.Description == description);
 
             if (target != null)
             {
@@ -161,7 +161,8 @@ namespace MainForm
             var amount = decimal.Parse(row.Cells[4].Value.ToString().Replace(" грн", ""));
             var description = row.Cells[5].Value.ToString();
 
-            var original = _budgetService.Transactions.FirstOrDefault(t =>
+            var original = _budgetService.GetTransactions(date, date, category, type)
+                .FirstOrDefault(t =>
                 t.Date.Date == date.Date &&
                 t.Type == type &&
                 t.Category == category &&

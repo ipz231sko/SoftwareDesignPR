@@ -38,9 +38,9 @@ namespace MainForm
         {
             listViewLastTransaction.Items.Clear();
 
-            var last = _budgetService.Transactions
-                .OrderByDescending(t => t.Date)
-                .Take(5);
+            var last = _budgetService.GetTransactions()
+    .OrderByDescending(t => t.Date)
+    .Take(5);
 
             foreach (var transaction in last)
             {
