@@ -50,3 +50,5 @@ WindowsForms застосунок для планування подобових
   - Найбільша витрата / дохід: `GetLargestExpense()`, `GetLargestIncome()`
   - Витрати за категоріями: `GetExpenseByCategory()`
   - Витрати за категоріями + підкатегоріями: `GetExpenseByCategoryAndSubcategory()`
+
+![Знімок екрана 2025-05-19 164759](https://github.com/user-attachments/assets/c8e4d893-67ed-4fc5-abee-82a1950c9aeb)
