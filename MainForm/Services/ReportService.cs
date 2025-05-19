@@ -7,83 +7,71 @@ using System.Threading.Tasks;
 
 namespace MainForm.Services
 {
-    public class ReportService
+    public class ReportService : BaseTransactionService
     {
-        private readonly List<Transaction> _transactions;
+        private Dictionary<string, decimal> _expenseByCategoryCache;
+        private Dictionary<string, decimal> _incomeByCategoryCache;
+        private Dictionary<CategorySubcategoryKey, decimal> _expenseBySubcategoryCache;
 
-        public ReportService(List<Transaction> transactions)
-        {
-            _transactions = transactions ?? throw new ArgumentNullException(nameof(transactions));
-        }
-
-        public decimal GetTotalIncome()
-        {
-            return _transactions.OfType<Income>().Sum(t => t.Amount);
-        }
-
-        public decimal GetTotalExpense()
-        {
-            return _transactions.OfType<Expense>().Sum(t => t.Amount);
-        }
+        public ReportService(List<Transaction> transactions) : base(transactions) { }
 
         public Dictionary<string, decimal> GetExpenseByCategory()
         {
-            return _transactions
-                .OfType<Expense>()
-                .GroupBy(t => t.Category)
-                .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            if (_expenseByCategoryCache == null)
+            {
+                _expenseByCategoryCache = GetTransactionsOfType<Expense>()
+                    .GroupBy(t => t.Category)
+                    .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            }
+            return _expenseByCategoryCache;
         }
+
         public Dictionary<string, decimal> GetIncomeByCategory()
         {
-            return _transactions
-                .OfType<Income>()
-                .GroupBy(t => t.Category)
-                .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            if (_incomeByCategoryCache == null)
+            {
+                _incomeByCategoryCache = GetTransactionsOfType<Income>()
+                    .GroupBy(t => t.Category)
+                    .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            }
+            return _incomeByCategoryCache;
         }
 
         public Dictionary<CategorySubcategoryKey, decimal> GetExpenseByCategoryAndSubcategory()
         {
-            return _transactions
-                .OfType<Expense>()
-                .GroupBy(t => new CategorySubcategoryKey(t.Category, t.Subcategory))
-                .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            if (_expenseBySubcategoryCache == null)
+            {
+                _expenseBySubcategoryCache = GetTransactionsOfType<Expense>()
+                    .GroupBy(t => new CategorySubcategoryKey(t.Category, t.Subcategory))
+                    .ToDictionary(g => g.Key, g => g.Sum(t => t.Amount));
+            }
+            return _expenseBySubcategoryCache;
         }
 
-        public int GetTransactionCount()
-        {
-            return _transactions.Count;
-        }
+        public int GetTransactionCount() => _transactions.Count;
 
-        public int GetExpenseTransactionCount()
-        {
-            return _transactions.OfType<Expense>().Count();
-        }
+        public int GetExpenseTransactionCount() => GetTransactionsOfType<Expense>().Count();
 
-        public int GetIncomeTransactionCount()
-        {
-            return _transactions.OfType<Income>().Count();
-        }
+        public int GetIncomeTransactionCount() => GetTransactionsOfType<Income>().Count();
 
         public decimal GetAverageExpense()
         {
-            var expenses = _transactions.OfType<Expense>().ToList();
-            return expenses.Any() ? expenses.Average(t => t.Amount) : 0;
+            var expenses = GetTransactionsOfType<Expense>().ToList();
+            return expenses.Count > 0 ? expenses.Average(t => t.Amount) : 0;
         }
 
         public decimal GetAverageIncome()
         {
-            var incomes = _transactions.OfType<Income>().ToList();
-            return incomes.Any() ? incomes.Average(t => t.Amount) : 0;
+            var incomes = GetTransactionsOfType<Income>().ToList();
+            return incomes.Count > 0 ? incomes.Average(t => t.Amount) : 0;
         }
 
-        public Transaction GetLargestExpense()
-        {
-            return _transactions.OfType<Expense>().OrderByDescending(t => t.Amount).FirstOrDefault();
-        }
+        public Transaction GetLargestExpense() => GetTransactionsOfType<Expense>()
+            .OrderByDescending(t => t.Amount)
+            .FirstOrDefault();
 
-        public Transaction GetLargestIncome()
-        {
-            return _transactions.OfType<Income>().OrderByDescending(t => t.Amount).FirstOrDefault();
-        }
+        public Transaction GetLargestIncome() => GetTransactionsOfType<Income>()
+            .OrderByDescending(t => t.Amount)
+            .FirstOrDefault();
     }
 }

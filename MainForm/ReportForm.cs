@@ -19,7 +19,7 @@ namespace MainForm
         {
             InitializeComponent();
             _budgetService = budgetService;
-            _reportService = new ReportService(_budgetService.Transactions);
+            _reportService = new ReportService(_budgetService.GetTransactions().ToList());
             DisplayReport();
         }
         private void DisplayReport()

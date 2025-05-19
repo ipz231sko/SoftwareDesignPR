@@ -8,58 +8,62 @@ using System.Threading.Tasks;
 
 namespace MainForm.Services
 {
-    public class BudgetService
+    public class BudgetService : BaseTransactionService
     {
         private readonly ITransactionRepository _repository;
-        public List<Transaction> Transactions { get; private set; }
 
         public BudgetService(ITransactionRepository repository)
+            : base(repository != null ? repository.Load() : throw new ArgumentNullException(nameof(repository)))
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            Transactions = _repository.Load();
+            _repository = repository;
         }
 
         public void AddTransaction(Transaction transaction)
         {
             if (transaction == null)
                 throw new ArgumentNullException(nameof(transaction));
-            Transactions.Add(transaction);
-            _repository.Save(Transactions);
+
+            _transactions.Add(transaction);
+            InvalidateCache();
+            _repository.Save(_transactions);
         }
 
         public void DeleteTransaction(Transaction transaction)
         {
             if (transaction == null)
                 throw new ArgumentNullException(nameof(transaction));
-            Transactions.Remove(transaction);
-            _repository.Save(Transactions);
+
+            if (_transactions.Remove(transaction))
+            {
+                InvalidateCache();
+                _repository.Save(_transactions);
+            }
         }
 
-        public decimal GetBalance()
+        public IEnumerable<Transaction> GetTransactions(DateTime? from = null, DateTime? to = null,
+            string category = null, string type = null)
         {
-            decimal income = Transactions.OfType<Income>().Sum(t => t.Amount);
-            decimal exponse = Transactions.OfType<Expense>().Sum(t => t.Amount);
-            return income - exponse;
+            var query = _transactions.AsEnumerable();
+
+            if (from.HasValue)
+                query = query.Where(t => t.Date >= from.Value);
+
+            if (to.HasValue)
+                query = query.Where(t => t.Date <= to.Value);
+
+            if (!string.IsNullOrEmpty(category))
+                query = query.Where(t => t.Category == category);
+
+            if (!string.IsNullOrEmpty(type))
+                query = query.Where(t => t.Type.Equals(type, StringComparison.OrdinalIgnoreCase));
+
+            return query.ToList();
         }
 
-        public decimal GetTotalIncome()
+        private void InvalidateCache()
         {
-            return Transactions.OfType<Income>().Sum(t => t.Amount);
-        }
-
-        public decimal GetTotalExpense()
-        {
-            return Transactions.OfType<Expense>().Sum(t => t.Amount);
-        }
-
-        public IEnumerable<Transaction> GetTransactions(DateTime? from = null, DateTime? to = null, string category = null, string type = null)
-        {
-            return Transactions.Where(t =>
-            (!from.HasValue || t.Date >= from.Value) &&
-            (!to.HasValue || t.Date <= to.Value) &&
-            (string.IsNullOrEmpty(category) || t.Category == category) &&
-            (string.IsNullOrEmpty(type) || t.Type.Equals(type, StringComparison.OrdinalIgnoreCase))
-            );
+            _cachedTotalIncome = null;
+            _cachedTotalExpense = null;
         }
     }
 }
