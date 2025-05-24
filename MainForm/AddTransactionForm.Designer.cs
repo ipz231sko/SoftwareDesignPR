@@ -32,7 +32,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxTransictionType = new System.Windows.Forms.ComboBox();
+            this.comboBoxTransactionType = new System.Windows.Forms.ComboBox();
             this.comboBoxTransactionCategory = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -81,19 +81,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Додати транзакцію";
             // 
-            // comboBoxTransictionType
+            // comboBoxTransactionType
             // 
-            this.comboBoxTransictionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxTransictionType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxTransictionType.FormattingEnabled = true;
-            this.comboBoxTransictionType.Items.AddRange(new object[] {
+            this.comboBoxTransactionType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxTransactionType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxTransactionType.FormattingEnabled = true;
+            this.comboBoxTransactionType.Items.AddRange(new object[] {
             "Дохід",
             "Витрата"});
-            this.comboBoxTransictionType.Location = new System.Drawing.Point(203, 66);
-            this.comboBoxTransictionType.Name = "comboBoxTransictionType";
-            this.comboBoxTransictionType.Size = new System.Drawing.Size(169, 24);
-            this.comboBoxTransictionType.TabIndex = 2;
-            this.comboBoxTransictionType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransictionType_SelectedIndexChanged_1);
+            this.comboBoxTransactionType.Location = new System.Drawing.Point(203, 66);
+            this.comboBoxTransactionType.Name = "comboBoxTransactionType";
+            this.comboBoxTransactionType.Size = new System.Drawing.Size(169, 24);
+            this.comboBoxTransactionType.TabIndex = 2;
+            this.comboBoxTransactionType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTransictionType_SelectedIndexChanged_1);
             // 
             // comboBoxTransactionCategory
             // 
@@ -246,7 +246,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxTransactionCategory);
-            this.Controls.Add(this.comboBoxTransictionType);
+            this.Controls.Add(this.comboBoxTransactionType);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddTransactionForm";
@@ -262,7 +262,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxTransictionType;
+        private System.Windows.Forms.ComboBox comboBoxTransactionType;
         private System.Windows.Forms.ComboBox comboBoxTransactionCategory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
