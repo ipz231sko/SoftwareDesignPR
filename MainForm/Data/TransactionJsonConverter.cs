@@ -10,6 +10,13 @@ namespace MainForm.Data
 {
     public class TransactionJsonConverter : System.Text.Json.Serialization.JsonConverter<Transaction>
     {
+        private static readonly Dictionary<string, Func<Transaction>> TransactionFactories =
+            new Dictionary<string, Func<Transaction>>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "Дохід", () => new Income() },
+                { "Витрата", () => new Expense() }
+            };
+
         public override Transaction Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             using (var doc = JsonDocument.ParseValue(ref reader))
@@ -17,19 +24,10 @@ namespace MainForm.Data
                 var root = doc.RootElement;
                 var type = root.GetProperty("Type").GetString();
 
-                Transaction transaction;
-                if (type == "Дохід")
-                {
-                    transaction = new Income();
-                }
-                else if (type == "Витрата")
-                {
-                    transaction = new Expense();
-                }
-                else
-                {
+                if (!TransactionFactories.TryGetValue(type, out var factory))
                     throw new NotSupportedException($"Unsupported transaction type: {type}");
-                }
+
+                var transaction = factory();
 
                 transaction.Date = root.GetProperty("Date").GetDateTime();
                 transaction.Amount = root.GetProperty("Amount").GetDecimal();
