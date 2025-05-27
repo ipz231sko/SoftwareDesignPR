@@ -43,19 +43,26 @@ namespace MainForm
 
             comboBoxTransictionType_SelectedIndexChanged_1(null, null);
 
-            int catIndex = comboBoxTransactionCategory.Items.IndexOf(transactionToEdit.Category);
-            if (catIndex >= 0)
-                comboBoxTransactionCategory.SelectedIndex = catIndex;
+            InitializeEditMode(transactionToEdit);
+        }
 
+        private void InitializeEditMode(Transaction transactionToEdit)
+        {
+            SelectComboBoxItemIfExists(comboBoxTransactionCategory, transactionToEdit.Category);
             comboBoxTransactionCategory_SelectedIndexChanged(null, null);
 
-            int subIndex = comboBoxSubCategory.Items.IndexOf(transactionToEdit.Subcategory);
-            if (subIndex >= 0)
-                comboBoxSubCategory.SelectedIndex = subIndex;
+            SelectComboBoxItemIfExists(comboBoxSubCategory, transactionToEdit.Subcategory);
 
             textBoxSum.Text = transactionToEdit.Amount.ToString();
             textBoxTransactionDescription.Text = transactionToEdit.Description;
             dateTimePickerTransaction.Value = transactionToEdit.Date;
+        }
+
+        private void SelectComboBoxItemIfExists(ComboBox comboBox, string item)
+        {
+            int index = comboBox.Items.IndexOf(item);
+            if (index >= 0)
+                comboBox.SelectedIndex = index;
         }
 
         private void buttonTransactionSave_Click(object sender, EventArgs e)
