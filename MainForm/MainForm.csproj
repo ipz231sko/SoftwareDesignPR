@@ -112,6 +112,7 @@
     <Compile Include="Services\BudgetService.cs" />
     <Compile Include="Services\FilterService.cs" />
     <Compile Include="Services\ReportService.cs" />
+    <Compile Include="Services\TransactionFactory.cs" />
     <Compile Include="TransactionListForm.cs">
       <SubType>Form</SubType>
     </Compile>
