@@ -67,30 +67,91 @@ namespace MainForm
 
         private void buttonTransactionSave_Click(object sender, EventArgs e)
         {
+            if (!ValidateTransactionAmount())
+                return;
+
+            var transactionData = CollectTransactionData();
+            var transaction = CreateTransaction(transactionData);
+
+            if (!ValidateTransaction(transaction))
+                return;
+
+            SaveTransaction(transaction);
+            ShowSuccessMessage();
+            CloseForm();
+        }
+        private bool ValidateTransactionAmount()
+        {
             if (!TryGetValidAmount(out decimal amount))
             {
-                MessageBox.Show("Введіть дійсну суму. Сума не може бути меншою чи рівною нулю.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ShowErrorMessage("Введіть дійсну суму. Сума не може бути меншою чи рівною нулю.");
+                return false;
             }
+            return true;
+        }
 
-            var type = comboBoxTransactionType.SelectedItem?.ToString();
-            var category = comboBoxTransactionCategory.SelectedItem?.ToString() ?? "";
-            var subcategory = comboBoxSubCategory.Visible ? comboBoxSubCategory.SelectedItem?.ToString() ?? "" : "";
-            var description = textBoxTransactionDescription.Text;
-            var date = dateTimePickerTransaction.Value;
+        private TransactionData CollectTransactionData()
+        {
+            return new TransactionData
+            {
+                Type = comboBoxTransactionType.SelectedItem?.ToString(),
+                Amount = GetValidAmount(),
+                Category = comboBoxTransactionCategory.SelectedItem?.ToString() ?? "",
+                Subcategory = GetSubcategory(),
+                Description = textBoxTransactionDescription.Text,
+                Date = dateTimePickerTransaction.Value
+            };
+        }
 
-            Transaction transaction = CreateTransaction(type, amount, category, subcategory, description, date);
+        private decimal GetValidAmount()
+        {
+            TryGetValidAmount(out decimal amount);
+            return amount;
+        }
+
+        private string GetSubcategory()
+        {
+            return comboBoxSubCategory.Visible
+                ? comboBoxSubCategory.SelectedItem?.ToString() ?? ""
+                : "";
+        }
+
+        private Transaction CreateTransaction(TransactionData data)
+        {
+            return CreateTransaction(data.Type, data.Amount, data.Category,
+                                   data.Subcategory, data.Description, data.Date);
+        }
+
+        private bool ValidateTransaction(Transaction transaction)
+        {
             if (transaction == null)
             {
-                MessageBox.Show("Невірний тип транзакції.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                ShowErrorMessage("Невірний тип транзакції.");
+                return false;
             }
+            return true;
+        }
 
+        private void SaveTransaction(Transaction transaction)
+        {
             _budgetService.AddTransaction(transaction);
+        }
 
-            MessageBox.Show("Транзакцію успішно додано.", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void ShowSuccessMessage()
+        {
+            MessageBox.Show("Транзакцію успішно додано.", "Успіх",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Помилка",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void CloseForm()
+        {
             this.Close();
-
             ResetFormFields();
         }
 
@@ -156,28 +217,65 @@ namespace MainForm
             dateTimePickerTransaction.Value = DateTime.Today;
         }
 
+
         private void UpdateCategoryAndSubcategoryControls(string selectedType)
         {
-            comboBoxTransactionCategory.Items.Clear();
-            comboBoxSubCategory.Items.Clear();
+            ClearCategoryControls();
 
             if (selectedType == EXPENSE_TYPE)
             {
-                comboBoxTransactionCategory.Items.AddRange(CategoryData.ExpenseCategories.Keys.ToArray());
-                comboBoxTransactionCategory.Enabled = true;
-                comboBoxSubCategory.Visible = true;
-                labelSubCategory.Visible = true;
+                SetupExpenseCategories();
             }
             else if (selectedType == INCOME_TYPE)
             {
-                comboBoxTransactionCategory.Items.AddRange(CategoryData.IncomeCategories.ToArray());
-                comboBoxTransactionCategory.Enabled = true;
-                comboBoxSubCategory.Visible = false;
-                labelSubCategory.Visible = false;
+                SetupIncomeCategories();
             }
 
+            SetDefaultCategorySelection();
+        }
+
+        private void ClearCategoryControls()
+        {
+            comboBoxTransactionCategory.Items.Clear();
+            comboBoxSubCategory.Items.Clear();
+        }
+
+        private void SetupExpenseCategories()
+        {
+            comboBoxTransactionCategory.Items.AddRange(CategoryData.ExpenseCategories.Keys.ToArray());
+            comboBoxTransactionCategory.Enabled = true;
+            SetSubCategoryVisibility(true);
+        }
+
+        private void SetupIncomeCategories()
+        {
+            comboBoxTransactionCategory.Items.AddRange(CategoryData.IncomeCategories.ToArray());
+            comboBoxTransactionCategory.Enabled = true;
+            SetSubCategoryVisibility(false);
+        }
+
+        private void SetSubCategoryVisibility(bool isVisible)
+        {
+            comboBoxSubCategory.Visible = isVisible;
+            labelSubCategory.Visible = isVisible;
+        }
+
+        private void SetDefaultCategorySelection()
+        {
             if (comboBoxTransactionCategory.Items.Count > 0)
                 comboBoxTransactionCategory.SelectedIndex = 0;
         }
+
+        // Допоміжний клас для передачі даних
+        private class TransactionData
+        {
+            public string Type { get; set; }
+            public decimal Amount { get; set; }
+            public string Category { get; set; }
+            public string Subcategory { get; set; }
+            public string Description { get; set; }
+            public DateTime Date { get; set; }
+        }
     }
+
 }
